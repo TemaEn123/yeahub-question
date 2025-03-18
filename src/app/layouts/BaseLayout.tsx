@@ -1,9 +1,10 @@
+import Header from "@/widgets/Header/ui/Header";
 import { Outlet } from "react-router";
 
 const BaseLayout = () => {
   return (
     <div className="wrapper">
-      <header>header</header>
+      <Header />
       <main>
         <div className="container">
           <Outlet />

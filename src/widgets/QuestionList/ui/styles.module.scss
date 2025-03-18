@@ -1,0 +1,22 @@
+.list {
+  max-width: 804px;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 4px 10px 0px rgba(106, 99, 118, 0.1);
+  padding: 25px 20px 40px;
+  margin-right: 20px;
+  &__header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e8e8e8;
+    & h1 {
+      color: #191919;
+      font-size: 24px;
+      line-height: 120%;
+    }
+  }
+  &__pages {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+  }
+}
