@@ -1,0 +1,18 @@
+.paginationBtn {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 23px;
+  border: 1px solid #6a0bff;
+  background: none;
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  &_left {
+    transform: rotate(180deg);
+  }
+}
