@@ -1,0 +1,42 @@
+.accordion {
+  border-bottom: 1px solid #d1d1d1;
+  padding: 24px 0;
+  &__event {
+    & button {
+      background: none;
+      position: relative;
+      padding-left: 16px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & p {
+        color: #191919;
+        font-size: 20px;
+        line-height: 120%;
+      }
+      &:before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #53f;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+    &_open {
+      & button {
+        & img {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  &__question {
+    padding-top: 16px;
+  }
+}

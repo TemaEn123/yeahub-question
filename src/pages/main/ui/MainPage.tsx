@@ -1,5 +1,11 @@
+import { QuestionList } from "@/widgets/QuestionList";
+
 const Page = () => {
-  return <div>MAIN PAGE</div>;
+  return (
+    <>
+      <QuestionList />
+    </>
+  );
 };
 
 export default Page;

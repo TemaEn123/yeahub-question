@@ -1,0 +1,33 @@
+.question {
+  padding: 0 0 24px 24px;
+  &__points {
+    display: flex;
+    margin-bottom: 24px;
+    & > * {
+      &:not(:first-child) {
+        margin-left: 40px;
+      }
+    }
+  }
+  &__content {
+    & p {
+      color: #474747;
+      line-height: 130%;
+    }
+  }
+  &__link {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+    & a {
+      color: #6a0bff;
+      font-weight: 600;
+      line-height: 110%;
+      display: flex;
+      align-items: center;
+      & img {
+        margin-left: 8px;
+      }
+    }
+  }
+}

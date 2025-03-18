@@ -1,0 +1,19 @@
+.point {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  &__text {
+    margin-right: 12px;
+    color: #303030;
+    line-height: 120%;
+  }
+  &__value {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #6a0bff;
+    color: #fff;
+  }
+}
