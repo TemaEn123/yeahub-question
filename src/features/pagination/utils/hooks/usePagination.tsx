@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
+import { Dispatch, useCallback } from "react";
 import { UsePaginationReturn } from "../../model/types";
 
 const usePagination = (
@@ -6,19 +6,19 @@ const usePagination = (
   currentPage: number,
   setCurrentPage: Dispatch<React.SetStateAction<number>>
 ): UsePaginationReturn => {
-  const goToPreviousPage = () => {
+  const goToPreviousPage = useCallback(() => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
+  }, []);
 
-  const goToNextPage = () => {
+  const goToNextPage = useCallback(() => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-  };
+  }, [totalPages]);
 
-  const goToPage = (page: number) => {
+  const goToPage = useCallback((page: number) => {
     setCurrentPage(page);
-  };
+  }, []);
 
-  const getPageRange = () => {
+  const getPageRange = useCallback(() => {
     const range = [];
     if (totalPages > 7) {
       const start =
@@ -50,7 +50,7 @@ const usePagination = (
     }
 
     return range;
-  };
+  }, [currentPage, totalPages]);
 
   return [goToPreviousPage, goToNextPage, goToPage, getPageRange, currentPage];
 };

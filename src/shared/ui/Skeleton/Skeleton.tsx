@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 interface Props {
   css: Record<string, number | string>;

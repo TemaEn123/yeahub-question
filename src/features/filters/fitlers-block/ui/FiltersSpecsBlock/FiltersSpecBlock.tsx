@@ -6,7 +6,7 @@ import {
 import { ISpecialization } from "@/features/filters/model/types";
 import { DEFAULT_SPEC } from "@/shared/consts";
 import Button from "@/shared/ui/Button/Button";
-import { useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import styles from "../FiltersBlock/styles.module.scss";
 import { useSearchParams } from "react-router";
 
@@ -14,7 +14,7 @@ interface Props {
   items: ISpecialization[] | undefined;
 }
 
-const FiltersSpecBlock = ({ items }: Props) => {
+const FiltersSpecBlock = memo(({ items }: Props) => {
   const [searchParams] = useSearchParams();
 
   const [activeBtn, setActiveBtn] = useState<string>(
@@ -32,12 +32,16 @@ const FiltersSpecBlock = ({ items }: Props) => {
     }
   }, []);
 
-  const handleSpecBtnClick = (value: ISpecialization | string): void => {
-    if (typeof value === "string") throw new Error("используй правильный тип");
-    setActiveBtn(String(value.id));
-    dispatch(changeFilters(["specialization", String(value.id)]));
-    dispatch(changeSpecTitle(value.title));
-  };
+  const handleSpecBtnClick = useCallback(
+    (value: ISpecialization | string): void => {
+      if (typeof value === "string")
+        throw new Error("используй правильный тип");
+      setActiveBtn(String(value.id));
+      dispatch(changeFilters(["specialization", String(value.id)]));
+      dispatch(changeSpecTitle(value.title));
+    },
+    []
+  );
 
   const handleShowClick = (): void => {
     setShow((prev) => !prev);
@@ -71,6 +75,6 @@ const FiltersSpecBlock = ({ items }: Props) => {
       </button>
     </>
   );
-};
+});
 
 export default FiltersSpecBlock;

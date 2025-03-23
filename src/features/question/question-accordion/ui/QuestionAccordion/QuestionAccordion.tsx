@@ -2,13 +2,13 @@ import styles from "./styles.module.scss";
 import { QuestionItem } from "@/entities/question";
 import { IQuestion } from "@/entities/question/model/types";
 import { miniArrowIcon } from "@/shared/assets";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 interface Props {
   question: IQuestion;
 }
 
-const QuestionAccordion = ({ question }: Props) => {
+const QuestionAccordion = memo(({ question }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -34,6 +34,6 @@ const QuestionAccordion = ({ question }: Props) => {
       ) : null}
     </li>
   );
-};
+});
 
 export default QuestionAccordion;

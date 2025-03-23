@@ -1,5 +1,6 @@
 import { ISpecialization } from "@/features/filters/model/types";
 import styles from "./styles.module.scss";
+import { memo } from "react";
 
 interface Props {
   label: string;
@@ -9,7 +10,7 @@ interface Props {
   value: string | ISpecialization;
 }
 
-const Button = ({ label, img, active, handleClick, value }: Props) => {
+const Button = memo(({ label, img, active, handleClick, value }: Props) => {
   return (
     <button
       onClick={() => handleClick(value)}
@@ -18,6 +19,6 @@ const Button = ({ label, img, active, handleClick, value }: Props) => {
       {img && <img src={img} alt="point" />} {label}
     </button>
   );
-};
+});
 
 export default Button;

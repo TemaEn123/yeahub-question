@@ -1,11 +1,12 @@
 import useFiltersHandler from "@/features/filters/utils/hooks/useFiltersHandler";
 import Button from "@/shared/ui/Button/Button";
+import { memo } from "react";
 
 interface Props {
   items: string[];
 }
 
-const FiltersRatingBlock = ({ items }: Props) => {
+const FiltersRatingBlock = memo(({ items }: Props) => {
   const [activeBtns, handleFiltersBtnClick] = useFiltersHandler("rate");
 
   return (
@@ -25,6 +26,6 @@ const FiltersRatingBlock = ({ items }: Props) => {
       })}
     </div>
   );
-};
+});
 
 export default FiltersRatingBlock;

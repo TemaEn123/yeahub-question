@@ -6,14 +6,18 @@ import {
 } from "@/features/filters/api/filtersApi";
 import { difficult, rating } from "@/shared/consts";
 import FiltersLoading from "../FiltersLoading/FiltersLoading";
+import { useMemo } from "react";
 
 const Filters = () => {
   const { data: specs, isLoading, error } = useGetSpecsQuery(null);
+  const memoSpecs = useMemo(() => specs?.data, [specs?.data]);
+
   const {
     data: skills,
     isLoading: isLoadingSkills,
     error: errorSkills,
   } = useGetSkillsQuery(null);
+  const memoSkills = useMemo(() => skills?.data, [skills?.data]);
 
   if (error) {
     console.log(error);
@@ -30,8 +34,8 @@ const Filters = () => {
       ) : (
         <>
           <FiltersSearch />
-          {!error && <FiltersBlock items={specs?.data} title="Специализация" />}
-          {!errorSkills && <FiltersBlock items={skills?.data} title="Навыки" />}
+          {!error && <FiltersBlock items={memoSpecs} title="Специализация" />}
+          {!errorSkills && <FiltersBlock items={memoSkills} title="Навыки" />}
           <FiltersBlock items={difficult} title="Сложность" />
           <FiltersBlock items={rating} title="Рейтинг" />
         </>
