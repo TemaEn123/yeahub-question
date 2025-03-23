@@ -3,14 +3,13 @@ import Point from "@/shared/ui/Point/Point";
 import { IQuestion } from "../../model/types";
 import { Link } from "react-router";
 import { bigArrowIcon } from "@/shared/assets";
+import { memo } from "react";
 
 interface Props {
   question: IQuestion;
 }
 
-const QuestionItem = ({ question }: Props) => {
-  console.log(question);
-
+const QuestionItem = memo(({ question }: Props) => {
   return (
     <article className={styles.question}>
       <div className={styles.question__points}>
@@ -28,6 +27,6 @@ const QuestionItem = ({ question }: Props) => {
       </div>
     </article>
   );
-};
+});
 
 export default QuestionItem;

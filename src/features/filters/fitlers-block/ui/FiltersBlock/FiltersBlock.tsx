@@ -4,13 +4,14 @@ import {
   FiltersBlockTitle,
   FiltersItems,
 } from "@/features/filters/model/types";
+import { memo } from "react";
 
 interface Props {
   title: FiltersBlockTitle;
   items: FiltersItems;
 }
 
-const FiltersBlock = ({ title, items }: Props) => {
+const FiltersBlock = memo(({ title, items }: Props) => {
   const filtersBlockComponent = useFiltersBlocks(title, items);
 
   return (
@@ -19,6 +20,6 @@ const FiltersBlock = ({ title, items }: Props) => {
       {filtersBlockComponent}
     </div>
   );
-};
+});
 
 export default FiltersBlock;

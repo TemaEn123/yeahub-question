@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import { bigArrowIcon } from "@/shared/assets";
 import { PaginationBtnDir } from "../../model/types";
+import { memo } from "react";
 
 interface Props {
   dir: PaginationBtnDir;
@@ -8,7 +9,7 @@ interface Props {
   disabled: boolean;
 }
 
-const PaginationButton = ({ dir, handleClick, disabled }: Props) => {
+const PaginationButton = memo(({ dir, handleClick, disabled }: Props) => {
   return (
     <button
       onClick={handleClick}
@@ -20,6 +21,6 @@ const PaginationButton = ({ dir, handleClick, disabled }: Props) => {
       <img src={bigArrowIcon} alt={`${dir} arrow`} />
     </button>
   );
-};
+});
 
 export default PaginationButton;

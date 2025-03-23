@@ -1,14 +1,15 @@
 import { IQuestion } from "@/entities/question/model/types";
 import { QuestionAccordion } from "@/features/question/question-accordion";
 import Skeleton from "@/shared/ui/Skeleton/Skeleton";
-import styles from "../QuestionList/styles.module.scss";
+import Warning from "@/shared/ui/Warning/Warning";
+import { memo } from "react";
 
 interface Props {
   isFetching: boolean;
   questions: IQuestion[] | undefined;
 }
 
-const Questions = ({ isFetching, questions }: Props) => {
+const Questions = memo(({ isFetching, questions }: Props) => {
   return (
     <>
       {isFetching ? (
@@ -21,9 +22,7 @@ const Questions = ({ isFetching, questions }: Props) => {
           }}
         />
       ) : !questions?.length ? (
-        <div className={styles.list__warn}>
-          По вашему запросу ничего не найдено
-        </div>
+        <Warning text="По вашему запросу ничего не найдено" />
       ) : (
         questions?.map((question) => (
           <QuestionAccordion key={question.id} question={question} />
@@ -31,6 +30,6 @@ const Questions = ({ isFetching, questions }: Props) => {
       )}
     </>
   );
-};
+});
 
 export default Questions;

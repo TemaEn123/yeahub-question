@@ -3,5 +3,13 @@ import logoTextIcon from "./icons/textLogo.svg";
 import miniArrowIcon from "./icons/miniArrow.svg";
 import bigArrowIcon from "./icons/bigArrow.svg";
 import searchIcon from "./icons/search.svg";
+import loadingIcon from "./icons/loading.png";
 
-export { logoIcon, logoTextIcon, miniArrowIcon, bigArrowIcon, searchIcon };
+export {
+  logoIcon,
+  logoTextIcon,
+  miniArrowIcon,
+  bigArrowIcon,
+  searchIcon,
+  loadingIcon,
+};

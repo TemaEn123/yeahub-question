@@ -1,14 +1,14 @@
 import { ISkill } from "@/features/filters/model/types";
 import useFiltersHandler from "@/features/filters/utils/hooks/useFiltersHandler";
 import Button from "@/shared/ui/Button/Button";
-import { useState } from "react";
+import { memo, useMemo, useState } from "react";
 import styles from "../FiltersBlock/styles.module.scss";
 
 interface Props {
   items: ISkill[] | undefined;
 }
 
-const FiltersSkillsBlock = ({ items }: Props) => {
+const FiltersSkillsBlock = memo(({ items }: Props) => {
   const [show, setShow] = useState<boolean>(false);
   const [activeBtns, handleFiltersBtnClick] = useFiltersHandler("skills");
 
@@ -16,7 +16,10 @@ const FiltersSkillsBlock = ({ items }: Props) => {
     setShow((prev) => !prev);
   };
 
-  const skills = show ? items : items?.slice(0, 8);
+  const skills = useMemo(
+    () => (show ? items : items?.slice(0, 8)),
+    [show, items]
+  );
 
   return (
     <>
@@ -41,6 +44,6 @@ const FiltersSkillsBlock = ({ items }: Props) => {
       </button>
     </>
   );
-};
+});
 
 export default FiltersSkillsBlock;
