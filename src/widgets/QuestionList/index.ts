@@ -1,3 +1,3 @@
-import QuestionList from "./ui/QuestionList";
+import QuestionList from "./ui/QuestionList/QuestionList";
 
 export { QuestionList };

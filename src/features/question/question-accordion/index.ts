@@ -1,3 +1,3 @@
-import QuestionAccordeon from "./ui/QuestionAccordeon/QuestionAccordion";
+import QuestionAccordion from "./ui/QuestionAccordion/QuestionAccordion";
 
-export { QuestionAccordeon };
+export { QuestionAccordion };
