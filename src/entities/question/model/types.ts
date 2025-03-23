@@ -2,10 +2,9 @@ import { ISpecialization } from "@/shared/interfaces/interfaces";
 
 export interface IQuestion {
   id: number;
-  specialization: ISpecialization;
+  questionSpecializations: ISpecialization[];
   complexity: number;
   rate: number;
-  imageSrc: string | null;
   title: string;
   shortAnswer: string;
 }
