@@ -1,12 +1,13 @@
 import { expandRange } from "@/features/filters/utils/helpers/expandRange";
 import useFiltersHandler from "@/features/filters/utils/hooks/useFiltersHandler";
 import Button from "@/shared/ui/Button/Button";
+import { memo } from "react";
 
 interface Props {
   items: string[] | undefined;
 }
 
-const FiltersDiffBlock = ({ items }: Props) => {
+const FiltersDiffBlock = memo(({ items }: Props) => {
   const [activeBtns, handleFiltersBtnClick] = useFiltersHandler("complexity");
 
   return (
@@ -28,6 +29,6 @@ const FiltersDiffBlock = ({ items }: Props) => {
       })}
     </div>
   );
-};
+});
 
 export default FiltersDiffBlock;

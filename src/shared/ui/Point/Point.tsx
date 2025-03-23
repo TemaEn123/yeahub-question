@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./styles.module.scss";
 import { PointLabel } from "@/shared/interfaces/interfaces";
 
@@ -6,13 +7,13 @@ interface Props {
   value: number;
 }
 
-const Point = ({ label, value }: Props) => {
+const Point = memo(({ label, value }: Props) => {
   return (
     <div className={styles.point}>
       <p className={styles.point__text}>{label}</p>
       <p className={styles.point__value}>{value}</p>
     </div>
   );
-};
+});
 
 export default Point;

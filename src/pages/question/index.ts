@@ -1,3 +1,5 @@
-import QuestionPage from "./ui/QuestionPage/QuestionPage";
+import { lazy } from "react";
+
+const QuestionPage = lazy(() => import("./ui/QuestionPage/QuestionPage"));
 
 export { QuestionPage };
