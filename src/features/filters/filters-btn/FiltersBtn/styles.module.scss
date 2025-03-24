@@ -1,0 +1,14 @@
+.btn {
+  display: none;
+  &_show {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  @media screen and (max-width: 992px) {
+    display: block;
+  }
+  & button {
+    background: none;
+  }
+}
