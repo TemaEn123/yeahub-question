@@ -1,4 +1,4 @@
-import { ISpecialization } from "@/features/filters/model/types";
+import { ISpecialization } from "@/shared/interfaces/interfaces";
 import styles from "./styles.module.scss";
 import { memo } from "react";
 

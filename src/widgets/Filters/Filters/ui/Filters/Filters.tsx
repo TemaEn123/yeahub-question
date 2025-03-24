@@ -34,10 +34,18 @@ const Filters = () => {
       ) : (
         <>
           <FiltersSearch />
-          {!error && <FiltersBlock items={memoSpecs} title="Специализация" />}
-          {!errorSkills && <FiltersBlock items={memoSkills} title="Навыки" />}
-          <FiltersBlock items={difficult} title="Сложность" />
-          <FiltersBlock items={rating} title="Рейтинг" />
+          {!error && (
+            <FiltersBlock
+              items={memoSpecs}
+              title="Специализация"
+              type="common"
+            />
+          )}
+          {!errorSkills && (
+            <FiltersBlock items={memoSkills} title="Навыки" type="common" />
+          )}
+          <FiltersBlock items={difficult} title="Сложность" type="common" />
+          <FiltersBlock items={rating} title="Рейтинг" type="common" />
         </>
       )}
     </aside>

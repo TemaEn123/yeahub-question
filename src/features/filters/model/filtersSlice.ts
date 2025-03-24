@@ -11,6 +11,7 @@ const initialState: IFiltersInitState = {
     complexity: "",
     rate: "",
     skills: "",
+    keywords: "",
   },
   specTitle: "",
 };
@@ -25,10 +26,14 @@ export const filtersSlice = createSlice({
     changeSpecTitle: (state, action: PayloadAction<string>) => {
       state.specTitle = action.payload;
     },
+    clearFilters: (state) => {
+      state.filters = initialState.filters;
+    },
   },
 });
 
-export const { changeFilters, changeSpecTitle } = filtersSlice.actions;
+export const { changeFilters, changeSpecTitle, clearFilters } =
+  filtersSlice.actions;
 
 export const selectFilters = (state: RootState) => state.filters.filters;
 export const selectSpecTitle = (state: RootState) => state.filters.specTitle;

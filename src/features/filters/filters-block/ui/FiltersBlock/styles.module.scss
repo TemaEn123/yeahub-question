@@ -1,0 +1,37 @@
+.block {
+  margin-top: 24px;
+  &__title {
+    color: #474747;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  &__btns {
+    margin-bottom: 10px;
+  }
+  &__level {
+    display: flex;
+    & > div {
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+  &__keys {
+    display: flex;
+    flex-wrap: wrap;
+    & button {
+      background: none;
+      color: #6a0bff;
+      line-height: 160%;
+      &:not(:last-child) {
+        margin-right: 14px;
+      }
+    }
+  }
+  &__show {
+    background: none;
+    color: #5509cc;
+    font-size: 14px;
+    text-decoration-line: underline;
+  }
+}

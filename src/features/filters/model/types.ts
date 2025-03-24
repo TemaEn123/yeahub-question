@@ -1,3 +1,5 @@
+import { ISkill, ISpecialization } from "@/shared/interfaces/interfaces";
+
 export interface IFilters {
   title: string;
   limit: string;
@@ -5,6 +7,7 @@ export interface IFilters {
   skills: string;
   complexity: string;
   rate: string;
+  keywords: string;
 }
 
 export interface IFiltersInitState {
@@ -16,17 +19,6 @@ export interface ISpecsReq {
   data: ISpecialization[];
 }
 
-export interface ISpecialization {
-  id: number;
-  title: string;
-}
-
-export interface ISkill {
-  id: number;
-  title: string;
-  imageSrc: string;
-}
-
 export interface ISkillsReq {
   data: ISkill[];
 }
@@ -35,6 +27,13 @@ export type FiltersBlockTitle =
   | "Специализация"
   | "Навыки"
   | "Сложность"
-  | "Рейтинг";
+  | "Рейтинг"
+  | "Уровень"
+  | "Ключевые слова";
 
-export type FiltersItems = ISpecialization[] | ISkill[] | string[] | undefined;
+export type FiltersItems =
+  | ISpecialization[]
+  | ISkill[]
+  | string[]
+  | [number, number]
+  | undefined;

@@ -1,4 +1,4 @@
-import { ISpecialization } from "@/shared/interfaces/interfaces";
+import { ISkill, ISpecialization } from "@/shared/interfaces/interfaces";
 
 export interface IQuestion {
   id: number;
@@ -7,6 +7,10 @@ export interface IQuestion {
   rate: number;
   title: string;
   shortAnswer: string;
+  longAnswer: string;
+  description: string;
+  keywords: string[];
+  questionSkills: ISkill[];
 }
 
 export interface IQuestionApiResponse {
