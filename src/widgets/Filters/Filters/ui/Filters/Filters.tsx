@@ -1,4 +1,4 @@
-import { FiltersBlock, FiltersSearch } from "@/features/filters";
+import { FiltersBlock, FiltersBtn, FiltersSearch } from "@/features/filters";
 import styles from "./styles.module.scss";
 import {
   useGetSkillsQuery,
@@ -7,6 +7,7 @@ import {
 import { difficult, rating } from "@/shared/consts";
 import FiltersLoading from "../FiltersLoading/FiltersLoading";
 import { useMemo } from "react";
+import { useFilters } from "@/features/filters/utils/hooks/useFilters";
 
 const Filters = () => {
   const { data: specs, isLoading, error } = useGetSpecsQuery(null);
@@ -19,6 +20,8 @@ const Filters = () => {
   } = useGetSkillsQuery(null);
   const memoSkills = useMemo(() => skills?.data, [skills?.data]);
 
+  const { isShow } = useFilters();
+
   if (error) {
     console.log(error);
   }
@@ -28,11 +31,12 @@ const Filters = () => {
   }
 
   return (
-    <aside className={styles.filters}>
+    <aside className={`${styles.filters} ${isShow && styles.filters_show}`}>
       {isLoading || isLoadingSkills ? (
         <FiltersLoading />
       ) : (
         <>
+          <FiltersBtn />
           <FiltersSearch />
           {!error && (
             <FiltersBlock

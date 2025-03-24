@@ -3,12 +3,12 @@ import {
   changeFilters,
   changeSpecTitle,
 } from "@/features/filters/model/filtersSlice";
-import { ISpecialization } from "@/features/filters/model/types";
 import { DEFAULT_SPEC } from "@/shared/consts";
 import Button from "@/shared/ui/Button/Button";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import styles from "../FiltersBlock/styles.module.scss";
 import { useSearchParams } from "react-router";
+import { ISpecialization } from "@/shared/interfaces/interfaces";
 
 interface Props {
   items: ISpecialization[] | undefined;

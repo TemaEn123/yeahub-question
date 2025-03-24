@@ -9,6 +9,7 @@ import QuestionPagination from "../QuestionPagination/QuestionPagination";
 import { useSearchParams } from "react-router";
 import useQueryParams from "../../utils/hooks/useQueryParams";
 import Warning from "@/shared/ui/Warning/Warning";
+import { FiltersBtn } from "@/features/filters";
 
 const QuestionList = () => {
   const [searchParams] = useSearchParams();
@@ -47,6 +48,7 @@ const QuestionList = () => {
         <>
           <div className={styles.list__header}>
             <QuestionHeader isLoading={isFetching} />
+            <FiltersBtn />
           </div>
           <ul>
             <Questions isFetching={isFetching} questions={memoQuestions} />
