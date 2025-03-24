@@ -18,20 +18,20 @@ const QuestionPage = () => {
 
   const memoQuestion = useMemo(() => question, [question]);
 
-  return (
-    <div className={styles.page}>
-      {isLoading ? (
-        <QuestionPageLoading />
-      ) : error ? (
-        <Warning text="Что-то пошло не так, попробуйте позже" />
-      ) : (
-        <>
-          <QuestionDetails question={memoQuestion} />
-          <FiltersCurrQuestion question={memoQuestion} />
-        </>
-      )}
-    </div>
-  );
+  const renderContent = () => {
+    if (isLoading) return <QuestionPageLoading />;
+
+    if (error) <Warning text="Что-то пошло не так, попробуйте позже" />;
+
+    return (
+      <>
+        <QuestionDetails question={memoQuestion} />
+        <FiltersCurrQuestion question={memoQuestion} />
+      </>
+    );
+  };
+
+  return <div className={styles.page}>{renderContent()}</div>;
 };
 
 export default QuestionPage;

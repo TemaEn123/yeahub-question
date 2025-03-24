@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import PaginationButton from "../PaginationButton/PaginationButton";
 import { memo, useMemo } from "react";
+import PaginationPages from "../PaginationPages/PaginationPages";
 
 interface Props {
   goToPreviousPage: () => void;
@@ -30,25 +31,11 @@ const Pagination = memo(
           handleClick={goToPreviousPage}
         />
 
-        <div className={styles.pagination__pages}>
-          {pageRange.map((page, i) =>
-            typeof page === "string" ? (
-              <span className={styles.pagination__dots} key={i}>
-                ...
-              </span>
-            ) : (
-              <button
-                className={`${styles.pagination__page} ${
-                  currentPage === page && styles.pagination__page_active
-                }`}
-                key={i}
-                onClick={() => goToPage(page)}
-              >
-                {page}
-              </button>
-            )
-          )}
-        </div>
+        <PaginationPages
+          currentPage={currentPage}
+          pageRange={pageRange}
+          goToPage={goToPage}
+        />
 
         <PaginationButton
           dir="right"

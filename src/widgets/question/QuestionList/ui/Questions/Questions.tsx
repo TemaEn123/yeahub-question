@@ -10,9 +10,9 @@ interface Props {
 }
 
 const Questions = memo(({ isFetching, questions }: Props) => {
-  return (
-    <>
-      {isFetching ? (
+  const renderContent = () => {
+    if (isFetching)
+      return (
         <Skeleton
           count={12}
           css={{
@@ -21,15 +21,17 @@ const Questions = memo(({ isFetching, questions }: Props) => {
             borderBottom: "1px solid #e8e8e8",
           }}
         />
-      ) : !questions?.length ? (
-        <Warning text="По вашему запросу ничего не найдено" />
-      ) : (
-        questions?.map((question) => (
-          <QuestionAccordion key={question.id} question={question} />
-        ))
-      )}
-    </>
-  );
+      );
+
+    if (!questions?.length)
+      return <Warning text="По вашему запросу ничего не найдено" />;
+
+    return questions?.map((question) => (
+      <QuestionAccordion key={question.id} question={question} />
+    ));
+  };
+
+  return renderContent();
 });
 
 export default Questions;

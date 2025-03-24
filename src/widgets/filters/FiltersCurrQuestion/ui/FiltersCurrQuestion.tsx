@@ -9,6 +9,7 @@ interface Props {
 
 const FiltersCurrQuestion = ({ question }: Props) => {
   const skills = useMemo(() => question?.questionSkills, [question]);
+
   const level = useMemo(
     () => [question?.complexity, question?.rate],
     [question]

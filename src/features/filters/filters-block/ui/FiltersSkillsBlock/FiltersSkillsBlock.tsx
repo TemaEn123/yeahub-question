@@ -22,6 +22,17 @@ const FiltersSkillsBlock = memo(({ items, type }: Props) => {
     [show, items]
   );
 
+  const renderLook = () => {
+    if (items!.length > 8)
+      return (
+        <button className={styles.block__show} onClick={handleShowClick}>
+          {!show ? "Посмотреть все" : "Скрыть"}
+        </button>
+      );
+
+    return null;
+  };
+
   return (
     <>
       <div>
@@ -40,11 +51,7 @@ const FiltersSkillsBlock = memo(({ items, type }: Props) => {
           );
         })}
       </div>
-      {items!.length > 8 && (
-        <button className={styles.block__show} onClick={handleShowClick}>
-          {!show ? "Посмотреть все" : "Скрыть"}
-        </button>
-      )}
+      {renderLook()}
     </>
   );
 });

@@ -22,38 +22,29 @@ const Filters = () => {
 
   const { isShow } = useFilters();
 
-  if (error) {
-    console.log(error);
-  }
+  const renderContent = () => {
+    if (isLoading || isLoadingSkills)
+      return (
+        <aside className={`${styles.filters} ${isShow && styles.filters_show}`}>
+          <FiltersLoading />
+        </aside>
+      );
 
-  if (errorSkills) {
-    console.log(error);
-  }
+    if (errorSkills || error) return null;
 
-  return (
-    <aside className={`${styles.filters} ${isShow && styles.filters_show}`}>
-      {isLoading || isLoadingSkills ? (
-        <FiltersLoading />
-      ) : (
-        <>
-          <FiltersBtn />
-          <FiltersSearch />
-          {!error && (
-            <FiltersBlock
-              items={memoSpecs}
-              title="Специализация"
-              type="common"
-            />
-          )}
-          {!errorSkills && (
-            <FiltersBlock items={memoSkills} title="Навыки" type="common" />
-          )}
-          <FiltersBlock items={difficult} title="Сложность" type="common" />
-          <FiltersBlock items={rating} title="Рейтинг" type="common" />
-        </>
-      )}
-    </aside>
-  );
+    return (
+      <aside className={`${styles.filters} ${isShow && styles.filters_show}`}>
+        <FiltersBtn />
+        <FiltersSearch />
+        <FiltersBlock items={memoSpecs} title="Специализация" type="common" />
+        <FiltersBlock items={memoSkills} title="Навыки" type="common" />
+        <FiltersBlock items={difficult} title="Сложность" type="common" />
+        <FiltersBlock items={rating} title="Рейтинг" type="common" />
+      </aside>
+    );
+  };
+
+  return renderContent();
 };
 
 export default Filters;

@@ -22,25 +22,30 @@ const QuestionPagination = memo(
     const [goToPreviousPage, goToNextPage, goToPage, getPageRange] =
       usePagination(totalPages, currentPage, setCurrentPage);
 
-    return (
-      <>
-        {isLoading ? (
+    const renderContent = () => {
+      if (isLoading)
+        return (
           <Skeleton
             count={10}
             css={{ width: 20, height: 20, marginRight: 10 }}
           />
-        ) : !questions?.data?.length ? null : (
-          <Pagination
-            goToPreviousPage={goToPreviousPage}
-            goToNextPage={goToNextPage}
-            goToPage={goToPage}
-            getPageRange={getPageRange}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
-        )}
-      </>
-    );
+        );
+
+      if (!questions?.data?.length) return null;
+
+      return (
+        <Pagination
+          goToPreviousPage={goToPreviousPage}
+          goToNextPage={goToNextPage}
+          goToPage={goToPage}
+          getPageRange={getPageRange}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      );
+    };
+
+    return renderContent();
   }
 );
 

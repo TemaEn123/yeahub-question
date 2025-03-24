@@ -51,6 +51,13 @@ const useQueryParams = (
       setSearchParams((prev) => ({ ...prev, page: currentPage, ...query }));
     }
   }, [filters, currentPage, searchParams]);
+
+  useEffect(() => {
+    if (renderCount.current > 1) {
+      setCurrentPage(1);
+    }
+    renderCount.current++;
+  }, [filters]);
 };
 
 export default useQueryParams;
