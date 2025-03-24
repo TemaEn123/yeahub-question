@@ -8,6 +8,9 @@
   &__header {
     padding-bottom: 16px;
     border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     & h1 {
       color: #191919;
       font-size: 24px;
