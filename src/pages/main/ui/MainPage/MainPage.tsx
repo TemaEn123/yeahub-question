@@ -1,6 +1,6 @@
-import { Filters } from "@/widgets/Filters";
+import { Filters } from "@/widgets/filters";
 import styles from "./styles.module.scss";
-import { QuestionList } from "@/widgets/QuestionList";
+import { QuestionList } from "@/widgets/question";
 
 const MainPage = () => {
   return (

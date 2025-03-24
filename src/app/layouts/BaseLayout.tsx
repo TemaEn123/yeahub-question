@@ -1,4 +1,4 @@
-import Header from "@/widgets/Header/ui/Header/Header";
+import { Header } from "@/widgets/header";
 import { Outlet } from "react-router";
 
 const BaseLayout = () => {

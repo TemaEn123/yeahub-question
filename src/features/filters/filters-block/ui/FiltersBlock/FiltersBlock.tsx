@@ -9,10 +9,11 @@ import { memo } from "react";
 interface Props {
   title: FiltersBlockTitle;
   items: FiltersItems;
+  type: "common" | "current";
 }
 
-const FiltersBlock = memo(({ title, items }: Props) => {
-  const filtersBlockComponent = useFiltersBlocks(title, items);
+const FiltersBlock = memo(({ title, items, type }: Props) => {
+  const filtersBlockComponent = useFiltersBlocks(title, items, type);
 
   return (
     <div className={styles.block}>
