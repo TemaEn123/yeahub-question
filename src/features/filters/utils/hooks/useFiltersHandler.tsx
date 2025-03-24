@@ -1,16 +1,24 @@
 import { useAppDispatch } from "@/app/appStore";
 import { useCallback, useMemo, useState } from "react";
-import { changeFilters } from "../../model/filtersSlice";
-import { IFilters, ISpecialization } from "../../model/types";
-import { useSearchParams } from "react-router";
+import { changeFilters, clearFilters } from "../../model/filtersSlice";
+import { IFilters } from "../../model/types";
+import { useNavigate, useSearchParams } from "react-router";
 import { chunkComplexity } from "../helpers/chunkComplexity";
+import { ISpecialization } from "@/shared/interfaces/interfaces";
 
 const useFiltersHandler = (
-  key: keyof IFilters
+  key: keyof IFilters,
+  type?: "common" | "current"
 ): [string[], (value: string | ISpecialization) => void] => {
   const [searchParams] = useSearchParams();
 
+  const navigate = useNavigate();
+
   const initialValue = useMemo(() => {
+    if (type === "current") {
+      return [];
+    }
+
     if (key === "rate") {
       return searchParams.get("rate")?.split(",") ?? [];
     }
@@ -22,7 +30,7 @@ const useFiltersHandler = (
       return numbers ? chunkComplexity(numbers) : [];
     }
     return [];
-  }, [key, searchParams]);
+  }, [key, searchParams, type]);
 
   const [activeBtns, setActiveBtns] = useState<string[]>(initialValue);
 
@@ -42,8 +50,14 @@ const useFiltersHandler = (
         setActiveBtns(newValue);
         dispatch(changeFilters([key, newValue.join(",")]));
       }
+
+      if (type === "current") {
+        dispatch(clearFilters());
+        dispatch(changeFilters([key, value]));
+        navigate(`/?page=1&specialization=11&skills=${value}`);
+      }
     },
-    [activeBtns, key]
+    [activeBtns, key, type]
   );
 
   return [activeBtns, handleFiltersBtnClick];

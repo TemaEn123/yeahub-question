@@ -1,16 +1,17 @@
-import { ISkill } from "@/features/filters/model/types";
 import useFiltersHandler from "@/features/filters/utils/hooks/useFiltersHandler";
 import Button from "@/shared/ui/Button/Button";
 import { memo, useMemo, useState } from "react";
 import styles from "../FiltersBlock/styles.module.scss";
+import { ISkill } from "@/shared/interfaces/interfaces";
 
 interface Props {
   items: ISkill[] | undefined;
+  type: "common" | "current";
 }
 
-const FiltersSkillsBlock = memo(({ items }: Props) => {
+const FiltersSkillsBlock = memo(({ items, type }: Props) => {
   const [show, setShow] = useState<boolean>(false);
-  const [activeBtns, handleFiltersBtnClick] = useFiltersHandler("skills");
+  const [activeBtns, handleFiltersBtnClick] = useFiltersHandler("skills", type);
 
   const handleShowClick = (): void => {
     setShow((prev) => !prev);
@@ -39,9 +40,11 @@ const FiltersSkillsBlock = memo(({ items }: Props) => {
           );
         })}
       </div>
-      <button className={styles.block__show} onClick={handleShowClick}>
-        {!show ? "Посмотреть все" : "Скрыть"}
-      </button>
+      {items!.length > 8 && (
+        <button className={styles.block__show} onClick={handleShowClick}>
+          {!show ? "Посмотреть все" : "Скрыть"}
+        </button>
+      )}
     </>
   );
 });

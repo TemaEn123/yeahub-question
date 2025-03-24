@@ -50,7 +50,7 @@ const useQueryParams = (
       delete query["limit"];
       setSearchParams((prev) => ({ ...prev, page: currentPage, ...query }));
     }
-  }, [filters, currentPage]);
+  }, [filters, currentPage, searchParams]);
 };
 
 export default useQueryParams;
